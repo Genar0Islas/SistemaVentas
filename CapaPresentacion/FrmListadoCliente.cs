@@ -73,12 +73,12 @@ namespace CapaPresentacion
 
             form.Edit = true;
 
-            form.txtidcliente.Text = this.dlistado.CurrentRow.Cells["ID Cliente"].Value.ToString();
+            form.txtidcliente.Text = this.dlistado.CurrentRow.Cells["Idcliente"].Value.ToString();
             form.txtnombre.Text = this.dlistado.CurrentRow.Cells["Nombre"].Value.ToString();
             form.txtapellidos.Text = this.dlistado.CurrentRow.Cells["Apellidos"].Value.ToString();
             form.txtdni.Text = this.dlistado.CurrentRow.Cells["DNI"].Value.ToString();
             form.txtrfc.Text = this.dlistado.CurrentRow.Cells["RFC"].Value.ToString();
-            form.txttelefono.Text = this.dlistado.CurrentRow.Cells["Teléfono"].Value.ToString();
+            form.txttelefono.Text = this.dlistado.CurrentRow.Cells["Telefono"].Value.ToString();
 
             string estado = this.dlistado.CurrentRow.Cells["Estado"].Value.ToString();
 
@@ -105,7 +105,7 @@ namespace CapaPresentacion
                 {
                     if (Opcion == DialogResult.OK)
                     {
-                        string idcliente = dlistado.CurrentRow.Cells["ID Cliente"].Value.ToString();
+                        string idcliente = dlistado.CurrentRow.Cells["Idcliente"].Value.ToString();
                         CNCliente.Eliminar(Convert.ToInt32(idcliente));
 
                         MessageBox.Show("Registro eliminado", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);

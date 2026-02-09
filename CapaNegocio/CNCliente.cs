@@ -12,23 +12,30 @@ namespace CapaNegocio
 {
     public class CNCliente
     {
-        public static string Guardar(string nombre, string apellidos, string rfc, string telefono, string estado)
+        public static DataTable Listar()
+        {
+            CDCliente Datos = new CDCliente();
+            return Datos.Listar();
+        }
+        public static string Guardar(string nombre, string apellidos, string rfc, string dni, string telefono, string estado)
         {
             CDCliente Datos = new CDCliente();
             Datos.Nombre = nombre;
             Datos.Apellidos = apellidos;
+            Datos.Dni = dni;
             Datos.Rfc = rfc;
             Datos.Telefono = telefono;
             Datos.Estado = estado;
             return Datos.Guardar(Datos);
         }
 
-        public static string Editar(int idcliente, string nombre, string apellidos, string rfc, string telefono, string estado)
+        public static string Editar(int idcliente, string nombre, string apellidos, string rfc, string dni, string telefono, string estado)
         {
             CDCliente Datos = new CDCliente();
             Datos.Idcliente = idcliente;
             Datos.Nombre = nombre;
             Datos.Apellidos = apellidos;
+            Datos.Dni = dni;
             Datos.Rfc = rfc;
             Datos.Telefono = telefono;
             Datos.Estado = estado;
@@ -45,18 +52,15 @@ namespace CapaNegocio
         public static DataTable BuscarNombre(String textobuscar)
         {
             CDCliente Datos = new CDCliente();
-            Datos.Buscar = textobuscar;
+            Datos.buscar = textobuscar;
             return Datos.BuscarNombre(Datos);
         }
 
         public static DataTable BuscarDni(string textobuscar)
         {
             CDCliente Datos = new CDCliente();
-            Datos.Buscar = textobuscar;
+            Datos.buscar = textobuscar;
             return Datos.BuscarDni(Datos);
         }
-
-
-
     }
 } 

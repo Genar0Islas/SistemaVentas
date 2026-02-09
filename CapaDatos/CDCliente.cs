@@ -20,7 +20,6 @@ namespace CapaDatos
         public string Rfc { get; set; }
         public string Telefono { get; set; }
         public string Estado { get; set; }
-
         public string buscar { get; set; }
 
         public DataTable Listar()
@@ -81,6 +80,126 @@ namespace CapaDatos
             catch (Exception ex)
             {
                 resul = ex.Message;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+            return resul;
+        }
+
+        public string Editar(CDCliente cli)
+        {
+            string resul = "";
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                conexion.Open();
+                SqlCommand Cmd = new SqlCommand("speditar_cliente", conexion);
+                Cmd.CommandType = CommandType.StoredProcedure;
+
+                Cmd.Parameters.AddWithValue("@idcliente", cli.Idcliente);
+                Cmd.Parameters.AddWithValue("@nombre", cli.Nombre);
+                Cmd.Parameters.AddWithValue("@apellidos", cli.Apellidos);
+                Cmd.Parameters.AddWithValue("@dni", cli.Dni);
+                Cmd.Parameters.AddWithValue("@Rfc", cli.Rfc);
+                Cmd.Parameters.AddWithValue("@telefono", cli.Telefono);
+                Cmd.Parameters.AddWithValue("@estado", cli.Estado);
+
+                resul = Cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
+            }
+            catch (Exception ex)
+            {
+                resul = ex.Message;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+            return resul;
+        }
+
+        public string Eliminar(CDCliente cli)
+        {
+            string resul = "";
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                conexion.Open();
+                SqlCommand Cmd = new SqlCommand("speliminar_cliente", conexion);
+                Cmd.CommandType = CommandType.StoredProcedure;
+
+                Cmd.Parameters.AddWithValue("@idcliente", cli.Idcliente);
+
+                resul = Cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
+            }
+            catch (Exception ex)
+            {
+                resul = ex.Message;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+            return resul;
+        }
+
+        public DataTable BuscarNombre(CDCliente cli)
+        {
+            DataTable resul = new DataTable("Cliente");
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                SqlCommand Cmd = new SqlCommand("spbuscar_cliente_nombre", conexion);
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.AddWithValue("@nombre", cli.buscar);
+                SqlDataAdapter SqlDat = new SqlDataAdapter(Cmd);
+                SqlDat.Fill(resul);
+            }
+            catch (Exception ex)
+            {
+                resul = null;
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+            return resul;
+        }
+
+        public DataTable BuscarDni(CDCliente cli)
+        {
+            DataTable resul = new DataTable("Cliente");
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                SqlCommand Cmd = new SqlCommand("spbuscar_cliente_dni", conexion);
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.AddWithValue("@dni", cli.buscar);
+                SqlDataAdapter SqlDat = new SqlDataAdapter(Cmd);
+                SqlDat.Fill(resul);
+            }
+            catch (Exception ex)
+            {
+                resul = null;
+                throw ex;
             }
             finally
             {
