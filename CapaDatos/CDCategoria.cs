@@ -91,7 +91,7 @@ namespace CapaDatos
                 SqlCommand Cmd = new SqlCommand("speditar_cliente", conexion);
                 Cmd.CommandType = CommandType.StoredProcedure;
 
-                Cmd.Parameters.AddWithValue("@idcategoria", cat.idCategoria);
+                Cmd.Parameters.AddWithValue("@idcategoria", cat.IdCategoria);
                 Cmd.Parameters.AddWithValue("@descripcion", cat.Descripcion);
 
                 resul = Cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
@@ -121,7 +121,7 @@ namespace CapaDatos
                 SqlCommand Cmd = new SqlCommand("speliminar_categoria", conexion);
                 Cmd.CommandType = CommandType.StoredProcedure;
 
-                Cmd.Parameters.AddWithValue("@idcategoria", cat.idCategoria);
+                Cmd.Parameters.AddWithValue("@idcategoria", cat.IdCategoria);
 
                 resul = Cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
             }
@@ -148,7 +148,7 @@ namespace CapaDatos
                 conexion.ConnectionString = Conexion.Conn;
                 SqlCommand Cmd = new SqlCommand("spbuscar_categoria", conexion);
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.AddWithValue("@Desc", cat.idCategoria);
+                Cmd.Parameters.AddWithValue("@Desc", cat.IdCategoria);
                 SqlDataAdapter SqlDat = new SqlDataAdapter(Cmd);
                 SqlDat.Fill(resul);
             }
