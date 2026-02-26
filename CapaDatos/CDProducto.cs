@@ -65,7 +65,7 @@ namespace CapaDatos
             {
                 conexion.ConnectionString = Conexion.Conn;
                 conexion.Open();
-                SqlCommand Cmd = new SqlCommand("spguardar_producto", conexion);
+                SqlCommand Cmd = new SqlCommand("SPGuardar_Producto", conexion);
                 Cmd.CommandType = CommandType.StoredProcedure;
 
                 Cmd.Parameters.AddWithValue("@idproducto", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -108,7 +108,7 @@ namespace CapaDatos
                 SqlCommand Cmd = new SqlCommand("speditar_producto", conexion);
                 Cmd.CommandType = CommandType.StoredProcedure;
 
-                Cmd.Parameters.AddWithValue("@idproducto", SqlDbType.Int).Direction = ParameterDirection.Output;
+                Cmd.Parameters.AddWithValue("@idproducto", prod.Idproducto);
                 Cmd.Parameters.AddWithValue("@codigo", prod.Codigo);
                 Cmd.Parameters.AddWithValue("@nombre", prod.Nombre);
                 Cmd.Parameters.AddWithValue("@descripcion", prod.Descripcion);
@@ -137,7 +137,7 @@ namespace CapaDatos
             return resul;
         }
 
-        public string Eliminar(CDCategoria cat)
+        public string Eliminar(CDProducto prod)
         {
             string resul = "";
             SqlConnection conexion = new SqlConnection();
@@ -145,10 +145,10 @@ namespace CapaDatos
             {
                 conexion.ConnectionString = Conexion.Conn;
                 conexion.Open();
-                SqlCommand Cmd = new SqlCommand("speliminar_categoria", conexion);
+                SqlCommand Cmd = new SqlCommand("speliminar_producto", conexion);
                 Cmd.CommandType = CommandType.StoredProcedure;
 
-                Cmd.Parameters.AddWithValue("@idcategoria", cat.Idcategoria);
+                Cmd.Parameters.AddWithValue("@idproducto", prod.Idproducto);
 
                 resul = Cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
             }
@@ -166,16 +166,44 @@ namespace CapaDatos
             return resul;
         }
 
-        public DataTable BuscarNombre(CDCategoria cat)
+        public DataTable BuscarNombre(CDProducto prod)
         {
-            DataTable resul = new DataTable("categoria");
+            DataTable resul = new DataTable("producto");
             SqlConnection conexion = new SqlConnection();
             try
             {
                 conexion.ConnectionString = Conexion.Conn;
-                SqlCommand Cmd = new SqlCommand("spbuscar_categoria", conexion);
+                SqlCommand Cmd = new SqlCommand("spbuscar_producto", conexion);
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.AddWithValue("@Desc", cat.Buscar);
+                Cmd.Parameters.AddWithValue("@nombre", prod.Buscar);
+                SqlDataAdapter SqlDat = new SqlDataAdapter(Cmd);
+                SqlDat.Fill(resul);
+            }
+            catch (Exception ex)
+            {
+                resul = null;
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+            return resul;
+        }
+
+        public DataTable BuscarCodigo(CDProducto prod)
+        {
+            DataTable resul = new DataTable("producto");
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                SqlCommand Cmd = new SqlCommand("spbuscar_producto_codigo", conexion);
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.AddWithValue("@codigo", prod.Buscar);
                 SqlDataAdapter SqlDat = new SqlDataAdapter(Cmd);
                 SqlDat.Fill(resul);
             }
