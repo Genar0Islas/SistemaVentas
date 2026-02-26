@@ -44,7 +44,6 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CNCategoria.cs" />
     <Compile Include="CNCliente.cs" />
-    <Compile Include="CNProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

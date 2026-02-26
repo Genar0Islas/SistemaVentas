@@ -137,7 +137,7 @@ namespace CapaDatos
             return resul;
         }
 
-        public string Eliminar(CDProducto cat)
+        public string Eliminar(CDCategoria cat)
         {
             string resul = "";
             SqlConnection conexion = new SqlConnection();
@@ -166,7 +166,7 @@ namespace CapaDatos
             return resul;
         }
 
-        public DataTable BuscarNombre(CDProducto cat)
+        public DataTable BuscarNombre(CDCategoria cat)
         {
             DataTable resul = new DataTable("categoria");
             SqlConnection conexion = new SqlConnection();
@@ -176,34 +176,6 @@ namespace CapaDatos
                 SqlCommand Cmd = new SqlCommand("spbuscar_categoria", conexion);
                 Cmd.CommandType = CommandType.StoredProcedure;
                 Cmd.Parameters.AddWithValue("@Desc", cat.Buscar);
-                SqlDataAdapter SqlDat = new SqlDataAdapter(Cmd);
-                SqlDat.Fill(resul);
-            }
-            catch (Exception ex)
-            {
-                resul = null;
-                throw ex;
-            }
-            finally
-            {
-                if (conexion.State == ConnectionState.Open)
-                {
-                    conexion.Close();
-                }
-            }
-            return resul;
-        }
-
-        public DataTable BuscarCodigo(CDProducto prod)
-        {
-            DataTable resul = new DataTable("producto");
-            SqlConnection conexion = new SqlConnection();
-            try
-            {
-                conexion.ConnectionString = Conexion.Conn;
-                SqlCommand Cmd = new SqlCommand("spbuscar_producto_codigo", conexion);
-                Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.AddWithValue("@codigo", prod.Buscar);
                 SqlDataAdapter SqlDat = new SqlDataAdapter(Cmd);
                 SqlDat.Fill(resul);
             }
