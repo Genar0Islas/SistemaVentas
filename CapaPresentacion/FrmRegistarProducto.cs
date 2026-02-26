@@ -19,6 +19,8 @@ namespace CapaPresentacion
         public FrmRegistarProducto()
         {
             InitializeComponent();
+            this.Insert = true;
+            this.txtidcategoria.Text = "1";
         }
 
         private void FrmRegistarProducto_Load(object sender, EventArgs e)
@@ -52,15 +54,14 @@ namespace CapaPresentacion
                         CNProducto.Guardar(this.txtcodigo.Text,
                                             this.txtnombreproducto.Text,
                                             this.txtdescripcion.Text,
-                                            this.dateTimefingreso.
-                                            
-                                            , this.dateTimefvencimiento.MaxDate,
+                                            this.dateTimefingreso.Value, 
+                                            this.dateTimefvencimiento.Value,
                                             Convert.ToDouble(this.txtpreciocompra.Text),
                                             Convert.ToDouble(this.txtprecioventa.Text),
                                             Convert.ToInt32(this.txtstock.Text),
                                             estado, Convert.ToInt32(this.txtidcategoria.Text));
                         
-                        MessageBox.Show("Cliente registrado correctamente", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Producto registrado correctamente", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (this.Edit == true)
                     {
@@ -84,7 +85,7 @@ namespace CapaPresentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + ex.StackTrace);
+                MessageBox.Show(ex.Message + ex.StackTrace + "Falla en las vistas");
             }
         }
 

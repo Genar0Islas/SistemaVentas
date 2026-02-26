@@ -51,6 +51,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimefingreso = new System.Windows.Forms.DateTimePicker();
             this.dateTimefvencimiento = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtidproducto
@@ -229,12 +230,11 @@
             // 
             // txtidcategoria
             // 
-            this.txtidcategoria.Location = new System.Drawing.Point(405, 26);
+            this.txtidcategoria.Location = new System.Drawing.Point(215, 101);
             this.txtidcategoria.Margin = new System.Windows.Forms.Padding(2);
             this.txtidcategoria.Name = "txtidcategoria";
             this.txtidcategoria.Size = new System.Drawing.Size(56, 20);
             this.txtidcategoria.TabIndex = 37;
-            this.txtidcategoria.Visible = false;
             // 
             // txtstock
             // 
@@ -268,11 +268,22 @@
             this.dateTimefvencimiento.Size = new System.Drawing.Size(200, 20);
             this.dateTimefvencimiento.TabIndex = 41;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(212, 86);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 42;
+            this.label10.Text = "Categoria";
+            // 
             // FrmRegistarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 369);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.dateTimefvencimiento);
             this.Controls.Add(this.dateTimefingreso);
             this.Controls.Add(this.txtstock);
@@ -329,5 +340,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimefingreso;
         private System.Windows.Forms.DateTimePicker dateTimefvencimiento;
+        private System.Windows.Forms.Label label10;
     }
 }
