@@ -56,6 +56,12 @@
     <Compile Include="FrmListadoCliente.Designer.cs">
       <DependentUpon>FrmListadoCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListadoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListadoProducto.Designer.cs">
+      <DependentUpon>FrmListadoProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRegistarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListadoCliente.resx">
       <DependentUpon>FrmListadoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListadoProducto.resx">
+      <DependentUpon>FrmListadoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistarProducto.resx">
       <DependentUpon>FrmRegistarProducto.cs</DependentUpon>

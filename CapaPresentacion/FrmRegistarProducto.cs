@@ -19,8 +19,16 @@ namespace CapaPresentacion
         public FrmRegistarProducto()
         {
             InitializeComponent();
-            this.Insert = true;
-            this.txtidcategoria.Text = "1";
+            
+            
+        }
+
+        private void CargarCategoria()
+        {
+            cmbcategoria.DataSource = CNProducto.Listar();
+            cmbcategoria.ValueMember = "idcategoria";
+            cmbcategoria.DisplayMember = "descipcion";
+
         }
 
         private void FrmRegistarProducto_Load(object sender, EventArgs e)
@@ -59,7 +67,8 @@ namespace CapaPresentacion
                                             Convert.ToDouble(this.txtpreciocompra.Text),
                                             Convert.ToDouble(this.txtprecioventa.Text),
                                             Convert.ToInt32(this.txtstock.Text),
-                                            estado, Convert.ToInt32(this.txtidcategoria.Text));
+                                            estado,
+                                            Convert.ToInt32(this.cmbcategoria.Text));
                         
                         MessageBox.Show("Producto registrado correctamente", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -72,13 +81,14 @@ namespace CapaPresentacion
                             Convert.ToDouble(this.txtpreciocompra.Text),
                             Convert.ToDouble(this.txtprecioventa.Text),
                             Convert.ToInt32(this.txtstock.Text),
-                            estado, Convert.ToInt32(this.txtidcategoria.Text));
+                            estado,
+                            Convert.ToInt32(this.cmbcategoria.Text));
                         MessageBox.Show("Cliente editado correctamente", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     this.Insert = false;
                     this.Edit = false;
 
-                    FrmListadoCliente form = new FrmListadoCliente();
+                    FrmListadoProducto form = new FrmListadoProducto();
                     form.Show();
                     this.Hide();
                 }
@@ -91,7 +101,7 @@ namespace CapaPresentacion
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            FrmListadoCliente form = new FrmListadoCliente();
+            FrmListadoProducto form = new FrmListadoProducto();
             form.Show();
             this.Hide();
         }

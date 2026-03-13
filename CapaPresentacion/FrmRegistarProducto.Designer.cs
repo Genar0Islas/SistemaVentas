@@ -46,12 +46,12 @@
             this.txtpreciocompra = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtidcategoria = new System.Windows.Forms.TextBox();
             this.txtstock = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimefingreso = new System.Windows.Forms.DateTimePicker();
             this.dateTimefvencimiento = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
+            this.cmbcategoria = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtidproducto
@@ -228,14 +228,6 @@
             this.label8.TabIndex = 33;
             this.label8.Text = "Precio de Compra";
             // 
-            // txtidcategoria
-            // 
-            this.txtidcategoria.Location = new System.Drawing.Point(215, 101);
-            this.txtidcategoria.Margin = new System.Windows.Forms.Padding(2);
-            this.txtidcategoria.Name = "txtidcategoria";
-            this.txtidcategoria.Size = new System.Drawing.Size(56, 20);
-            this.txtidcategoria.TabIndex = 37;
-            // 
             // txtstock
             // 
             this.txtstock.Location = new System.Drawing.Point(32, 266);
@@ -256,16 +248,18 @@
             // 
             // dateTimefingreso
             // 
+            this.dateTimefingreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimefingreso.Location = new System.Drawing.Point(31, 160);
             this.dateTimefingreso.Name = "dateTimefingreso";
-            this.dateTimefingreso.Size = new System.Drawing.Size(200, 20);
+            this.dateTimefingreso.Size = new System.Drawing.Size(107, 20);
             this.dateTimefingreso.TabIndex = 40;
             // 
             // dateTimefvencimiento
             // 
+            this.dateTimefvencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimefvencimiento.Location = new System.Drawing.Point(278, 159);
             this.dateTimefvencimiento.Name = "dateTimefvencimiento";
-            this.dateTimefvencimiento.Size = new System.Drawing.Size(200, 20);
+            this.dateTimefvencimiento.Size = new System.Drawing.Size(114, 20);
             this.dateTimefvencimiento.TabIndex = 41;
             // 
             // label10
@@ -278,17 +272,27 @@
             this.label10.TabIndex = 42;
             this.label10.Text = "Categoria";
             // 
+            // cmbcategoria
+            // 
+            this.cmbcategoria.FormattingEnabled = true;
+            this.cmbcategoria.Items.AddRange(new object[] {
+            "3"});
+            this.cmbcategoria.Location = new System.Drawing.Point(215, 101);
+            this.cmbcategoria.Name = "cmbcategoria";
+            this.cmbcategoria.Size = new System.Drawing.Size(154, 21);
+            this.cmbcategoria.TabIndex = 43;
+            // 
             // FrmRegistarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 369);
+            this.Controls.Add(this.cmbcategoria);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dateTimefvencimiento);
             this.Controls.Add(this.dateTimefingreso);
             this.Controls.Add(this.txtstock);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtidcategoria);
             this.Controls.Add(this.txtprecioventa);
             this.Controls.Add(this.txtpreciocompra);
             this.Controls.Add(this.label7);
@@ -335,11 +339,11 @@
         public System.Windows.Forms.TextBox txtpreciocompra;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        public System.Windows.Forms.TextBox txtidcategoria;
         public System.Windows.Forms.TextBox txtstock;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimefingreso;
-        private System.Windows.Forms.DateTimePicker dateTimefvencimiento;
         private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.ComboBox cmbcategoria;
+        public System.Windows.Forms.DateTimePicker dateTimefingreso;
+        public System.Windows.Forms.DateTimePicker dateTimefvencimiento;
     }
 }
